@@ -17,8 +17,8 @@ async function deleteRapper(){
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'stageNameS': sName,
-              'birthNameS': bName
+              'gameNameS': sName,
+              'expansionsOwnedS': bName
             })
           })
         const data = await response.json()
@@ -39,8 +39,8 @@ async function addLike(){
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'stageNameS': sName,
-              'birthNameS': bName,
+              'gameNameS': sName,
+              'expansionsOwnedS': bName,
               'likesS': tLikes
             })
           })

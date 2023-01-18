@@ -34,8 +34,8 @@ app.get('/',(request, response)=>{
 })
 
 app.post('/addRapper', (request, response) => {
-    db.collection('rappers').insertOne({stageName: request.body.stageName,
-    birthName: request.body.birthName, likes: 0})
+    db.collection('rappers').insertOne({gameName: request.body.gameName,
+    expansionsOwned: request.body.expansionsOwned, likes: 0})
     .then(result => {
         console.log('Rapper Added')
         response.redirect('/')
@@ -44,7 +44,7 @@ app.post('/addRapper', (request, response) => {
 })
 
 app.put('/addOneLike', (request, response) => {
-    db.collection('rappers').updateOne({stageName: request.body.stageNameS, birthName: request.body.birthNameS,likes: request.body.likesS},{
+    db.collection('rappers').updateOne({gameName: request.body.gameNameS, expansionsOwned: request.body.expansionsOwnedS,likes: request.body.likesS},{
         $set: {
             likes:request.body.likesS + 1
           }
@@ -61,7 +61,7 @@ app.put('/addOneLike', (request, response) => {
 })
 
 app.delete('/deleteRapper', (request, response) => {
-    db.collection('rappers').deleteOne({stageName: request.body.stageNameS})
+    db.collection('rappers').deleteOne({gameName: request.body.gameNameS})
     .then(result => {
         console.log('Rapper Deleted')
         response.json('Rapper Deleted')
