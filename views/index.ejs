@@ -18,7 +18,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Preston's Board Game Library</h1>
+    <h1>Preston's Party Preferences</h1>
     <ul class="rappers">
     <% for(let i=0; i < info.length; i++) {%>
         <li class="rapper">
@@ -26,6 +26,7 @@
             <span><%= info[i].expansionsOwned %></span>
             <span><%= info[i].likes %></span>
             <span class='fa fa-thumbs-up'></span>
+            <span class='fa fa-thumbs-down'></span>
             <span class='fa fa-trash'></span>
         </li>
     <% } %>

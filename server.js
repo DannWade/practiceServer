@@ -27,13 +27,13 @@ app.use(express.json())
 
 app.get('/',(request, response)=>{
     db.collection('rappers').find().sort({likes: -1}).toArray()
-    .then(data => {
+    .then(data => {   // data is the array of objects from db and stored in info object
         response.render('index.ejs', { info: data })
     })
     .catch(error => console.error(error))
 })
 
-app.post('/addRapper', (request, response) => {
+app.post('/addRapper', (request, response) => {   //add rapper comes from action on ejs form 
     db.collection('rappers').insertOne({gameName: request.body.gameName,
     expansionsOwned: request.body.expansionsOwned, likes: 0})
     .then(result => {
@@ -55,6 +55,23 @@ app.put('/addOneLike', (request, response) => {
     .then(result => {
         console.log('Added One Like')
         response.json('Like Added')
+    })
+    .catch(error => console.error(error))
+
+})
+
+app.put('/minusOneLike', (request, response) => {
+    db.collection('rappers').updateOne({gameName: request.body.gameNameS, expansionsOwned: request.body.expansionsOwnedS,likes: request.body.likesS},{
+        $set: {
+            likes:request.body.likesS - 1
+          }
+    },{
+        sort: {_id: -1},
+        upsert: true
+    })
+    .then(result => {
+        console.log('minus One Like')
+        response.json('Like decremented')
     })
     .catch(error => console.error(error))
 
