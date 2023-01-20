@@ -59,8 +59,8 @@ async function addLike(){
     }
 }
 
-async function minusLike(){
-    const sName = this.parentNode.childNodes[1].innerText
+async function minusLike(){   //grabs info from DOM and sends it as part of the request for server to find in db
+    const sName = this.parentNode.childNodes[1].innerText  //DOM is made up of nodes in order of 1,3,5,7
     const bName = this.parentNode.childNodes[3].innerText
     const tLikes = Number(this.parentNode.childNodes[5].innerText)
     try{

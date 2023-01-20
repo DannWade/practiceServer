@@ -19,27 +19,27 @@
 </head>
 <body>
     <h1>Preston's Party Preferences</h1>
-    <ul class="rappers">
-    <% for(let i=0; i < info.length; i++) {%>
-        <li class="rapper">
-            <span><%= info[i].gameName %></span>
-            <span><%= info[i].expansionsOwned %></span>
-            <span><%= info[i].likes %></span>
-            <span class='fa fa-thumbs-up'></span>
-            <span class='fa fa-thumbs-down'></span>
-            <span class='fa fa-trash'></span>
-        </li>
-    <% } %>
-    </ul>
 
     <h2>Add A Board Game to the Library:</h2>
 
     <form action="/addRapper" method="POST">
         <input type="text" placeholder="Game Name" name="gameName">
-        <input type="text" placeholder="Expansion Name" name="expansionsOwned">
+        <input type="text" placeholder="Expansion Name (optional)" name="expansionsOwned">
         <input type="submit">
     </form>
-    
+    <ul class="rappers">
+        <% for(let i=0; i < info.length; i++) {%>
+            <li class="rapper">
+                <span><%= info[i].gameName %></span>
+                <span><%= info[i].expansionsOwned %></span>
+                <span><%= info[i].likes %></span>
+                <span class='fa fa-thumbs-up fa-1x'></span>
+                <span class='fa fa-thumbs-down fa-1x'></span>
+                <span>...</span>
+                <span class='fa fa-trash fa-1x'></span>
+            </li>
+        <% } %>
+        </ul>
 
     <script src='js/main.js'></script>
 </body>
