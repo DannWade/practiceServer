@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
-const cors= require('cors')
+const cors= require('cors') 
 app.use(cors())
 const MongoClient = require('mongodb').MongoClient
 const PORT = 2121
 
 
-require('dotenv').config()
+require('dotenv').config()  //prevents credentials uploading to github
 
 
 let db,
